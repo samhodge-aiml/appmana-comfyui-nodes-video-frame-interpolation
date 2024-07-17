@@ -24,7 +24,7 @@ package-dir = { "comfyui_frame_interpolation" = "." }
 dependencies = { file = ["requirements-with-cupy.txt"] }
 
 [project.entry-points."comfyui.custom_nodes"]
-comfyui_video_helper_suite = "comfyui_frame_interpolation"
+comfyui_frame_interpolation = "comfyui_frame_interpolation"
 
 [project.entry-points."comfyui.custom_config"]
-comfyui_video_helper_suite = "comfyui_frame_interpolation.config.add_configuration:add_configuration"
+comfyui_frame_interpolation = "comfyui_frame_interpolation.config.add_configuration:add_configuration"
