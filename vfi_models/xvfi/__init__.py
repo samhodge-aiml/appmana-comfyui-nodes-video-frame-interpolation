@@ -5,7 +5,7 @@ import torch.nn.functional as F
 import einops
 from torch.utils.data import DataLoader
 import pathlib
-from vfi_utils import load_file_from_github_release, preprocess_frames, postprocess_frames, InterpolationStateList
+from ...vfi_utils import load_file_from_github_release, preprocess_frames, postprocess_frames, InterpolationStateList
 import typing
 from comfy.model_management import get_torch_device
 
@@ -45,7 +45,7 @@ class XVFI_Inference(nn.Module):
         x = einops.rearrange(x, "t b c h w -> b c t h w")
         return self.model(x, timestep, is_training=False)
 
-MODEL_TYPE = pathlib.Path(__file__).parent.name
+MODEL_TYPE = "xvfi"
 
 class XVFI:
     @classmethod

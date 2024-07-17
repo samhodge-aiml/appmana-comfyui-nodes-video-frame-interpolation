@@ -2,7 +2,7 @@ import torch
 from comfy.model_management import get_torch_device, soft_empty_cache
 import numpy as np
 import typing
-from vfi_utils import InterpolationStateList, load_file_from_github_release, preprocess_frames, postprocess_frames, assert_batch_size
+from ...vfi_utils import InterpolationStateList, load_file_from_github_release, preprocess_frames, postprocess_frames, assert_batch_size
 import pathlib
 import warnings
 from .flavr_arch import UNet_3D_3D, InputPadder
@@ -22,7 +22,7 @@ def build_flavr(model_path):
     del sd
     return model
 
-MODEL_TYPE = pathlib.Path(__file__).parent.name
+MODEL_TYPE = "flavr"
 CKPT_NAMES = ["FLAVR_2x.pth", "FLAVR_4x.pth", "FLAVR_8x.pth"]
 
 class FLAVR_VFI:

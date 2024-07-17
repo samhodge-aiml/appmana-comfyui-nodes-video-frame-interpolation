@@ -2,12 +2,12 @@ import torch
 from comfy.model_management import get_torch_device, soft_empty_cache
 import numpy as np
 import typing
-from vfi_utils import InterpolationStateList, load_file_from_github_release, preprocess_frames, postprocess_frames, assert_batch_size
+from ...vfi_utils import InterpolationStateList, load_file_from_github_release, preprocess_frames, postprocess_frames, assert_batch_size
 import pathlib
 import warnings
 import gc
 
-MODEL_TYPE = pathlib.Path(__file__).parent.name
+MODEL_TYPE = "stmfnet"
 device = get_torch_device()
 
 class STMFNet_VFI:

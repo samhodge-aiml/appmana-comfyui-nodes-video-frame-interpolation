@@ -1,10 +1,9 @@
-torch
+comfyui
 numpy
 einops
-opencv-contrib-python
+opencv-contrib-python-headless
 kornia
 scipy
 Pillow
-torchvision
 tqdm
-cupy-wheel
+cupy-cuda12x

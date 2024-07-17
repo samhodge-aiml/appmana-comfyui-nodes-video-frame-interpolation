@@ -1,14 +1,14 @@
 import torch
 from torch.utils.data import DataLoader
 import pathlib
-from vfi_utils import load_file_from_github_release, preprocess_frames, postprocess_frames, generic_frame_loop, InterpolationStateList
+from ...vfi_utils import load_file_from_github_release, preprocess_frames, postprocess_frames, generic_frame_loop, InterpolationStateList
 import typing
 from comfy.model_management import get_torch_device
 import re
 from functools import cmp_to_key
 from packaging import version
 
-MODEL_TYPE = pathlib.Path(__file__).parent.name
+MODEL_TYPE = "rife"
 CKPT_NAME_VER_DICT = {
     "rife40.pth": "4.0",
     "rife41.pth": "4.0", 

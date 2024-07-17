@@ -1,4 +1,8 @@
-import latent_preview
+from comfy.cmd import latent_preview
+import comfy.model_management
+import comfy.sample
+import comfy.utils
+import comfy.samplers
 import comfy
 import einops
 import torch

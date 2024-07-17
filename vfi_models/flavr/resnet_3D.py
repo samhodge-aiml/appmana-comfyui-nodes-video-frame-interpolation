@@ -5,6 +5,8 @@ import torch.nn as nn
 
 __all__ = ['unet_18', 'unet_34']
 
+from torch.hub import load_state_dict_from_url
+
 useBias = False
 
 class identity(nn.Module):

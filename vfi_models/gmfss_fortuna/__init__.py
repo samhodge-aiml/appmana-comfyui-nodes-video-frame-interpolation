@@ -1,5 +1,5 @@
 import pathlib
-from vfi_utils import load_file_from_github_release, preprocess_frames, postprocess_frames, generic_frame_loop, InterpolationStateList
+from ...vfi_utils import load_file_from_github_release, preprocess_frames, postprocess_frames, generic_frame_loop, InterpolationStateList
 import typing
 import torch
 import torch.nn as nn
@@ -7,7 +7,7 @@ import torch.nn.functional as F
 from comfy.model_management import get_torch_device
 
 
-GLOBAL_MODEL_TYPE = pathlib.Path(__file__).parent.name
+GLOBAL_MODEL_TYPE = "gmfss_fortuna"
 CKPTS_PATH_CONFIG = {
     "GMFSS_fortuna_union": {
         "ifnet": ("rife", "rife46.pth"),

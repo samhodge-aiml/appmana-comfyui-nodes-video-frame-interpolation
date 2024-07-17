@@ -10,7 +10,7 @@ import typing
 from comfy.model_management import get_torch_device
 
 ##########################################################
-from vfi_models.ops import sepconv_func
+from ..ops import sepconv_func
 ##########################################################
 
 

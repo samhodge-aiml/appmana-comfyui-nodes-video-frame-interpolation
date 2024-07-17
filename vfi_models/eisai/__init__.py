@@ -1,11 +1,11 @@
 import pathlib
-from vfi_utils import load_file_from_github_release, preprocess_frames, postprocess_frames, generic_frame_loop, InterpolationStateList
+from ...vfi_utils import load_file_from_github_release, preprocess_frames, postprocess_frames, generic_frame_loop, InterpolationStateList
 import typing
 import torch
 import torch.nn as nn
 from comfy.model_management import soft_empty_cache, get_torch_device
 
-MODEL_TYPE = pathlib.Path(__file__).parent.name
+MODEL_TYPE = "eisai"
 MODEL_FILE_NAMES = {
     "ssl": "eisai_ssl.pt",
     "dtm": "eisai_dtm.pt",

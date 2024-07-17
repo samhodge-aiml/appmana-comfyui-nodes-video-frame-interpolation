@@ -24,8 +24,8 @@ import torch.nn as nn
 import torch.nn.functional as F
 import torch
 import math
-from vfi_models.rife.rife_arch import IFNet
-from vfi_models.ops import softsplat
+from ..rife.rife_arch import IFNet
+from ..ops import softsplat
 from comfy.model_management import get_torch_device
 
 device = get_torch_device()

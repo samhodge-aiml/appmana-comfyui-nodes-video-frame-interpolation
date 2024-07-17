@@ -1,11 +1,11 @@
 import torch
 import pathlib
-from vfi_utils import load_file_from_github_release, preprocess_frames, postprocess_frames
+from ...vfi_utils import load_file_from_github_release, preprocess_frames, postprocess_frames
 import typing
 from comfy.model_management import get_torch_device
-from vfi_utils import generic_frame_loop, InterpolationStateList
+from ...vfi_utils import generic_frame_loop, InterpolationStateList
 
-MODEL_TYPE = pathlib.Path(__file__).parent.name
+MODEL_TYPE = "ifrnet"
 CKPT_NAMES = ["IFRNet_S_Vimeo90K.pth", "IFRNet_L_Vimeo90K.pth"]
 
 class IFRNet_VFI:

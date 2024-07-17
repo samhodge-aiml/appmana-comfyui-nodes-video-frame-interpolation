@@ -2,12 +2,12 @@ import pathlib
 import torch
 from torch.utils.data import DataLoader
 import pathlib
-from vfi_utils import load_file_from_github_release, preprocess_frames, postprocess_frames
+from ...vfi_utils import load_file_from_github_release, preprocess_frames, postprocess_frames
 import typing
 from comfy.model_management import get_torch_device
-from vfi_utils import InterpolationStateList, generic_frame_loop
+from ...vfi_utils import InterpolationStateList, generic_frame_loop
 
-MODEL_TYPE = pathlib.Path(__file__).parent.name
+MODEL_TYPE = "m2m"
 CKPT_NAMES = ["M2M.pth"]
 
 

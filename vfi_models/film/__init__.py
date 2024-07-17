@@ -3,11 +3,11 @@ from comfy.model_management import get_torch_device, soft_empty_cache
 import bisect
 import numpy as np
 import typing
-from vfi_utils import InterpolationStateList, load_file_from_github_release, preprocess_frames, postprocess_frames
+from ...vfi_utils import InterpolationStateList, load_file_from_github_release, preprocess_frames, postprocess_frames
 import pathlib
 import gc
 
-MODEL_TYPE = pathlib.Path(__file__).parent.name
+MODEL_TYPE = "film"
 DEVICE = get_torch_device()
 def inference(model, img_batch_1, img_batch_2, inter_frames):
     results = [

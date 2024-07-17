@@ -1,17 +1,11 @@
 import torch.multiprocessing as mp
 
+from ...config.add_configuration import VideoFrameInterpolationConfiguration
+
 if mp.current_process().name == "MainProcess":
-    import yaml
-    import os
-    from pathlib import Path
+    from comfy.cli_args import args  # type: VideoFrameInterpolationConfiguration
 
-    config_path = Path(Path(__file__).parent.parent.parent.resolve(), "config.yaml")
-
-    if os.path.exists(config_path):
-        config = yaml.load(open(config_path, "r"), Loader=yaml.FullLoader)
-        ops_backend = config["ops_backend"]
-    else:
-        ops_backend = "taichi"
+    ops_backend = args.vfi_ops_backend or "cupy"
 
     assert ops_backend in ["taichi", "cupy"]
 
@@ -19,4 +13,3 @@ if mp.current_process().name == "MainProcess":
         from .taichi_ops import softsplat, ModuleSoftsplat, FunctionSoftsplat, softsplat_func, costvol_func, sepconv_func, init, batch_edt, FunctionAdaCoF, ModuleCorrelation, FunctionCorrelation, _FunctionCorrelation
     else:
         from .cupy_ops import softsplat, ModuleSoftsplat, FunctionSoftsplat, softsplat_func, costvol_func, sepconv_func, init, batch_edt, FunctionAdaCoF, ModuleCorrelation, FunctionCorrelation, _FunctionCorrelation
-

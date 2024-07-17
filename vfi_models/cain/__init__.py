@@ -1,11 +1,11 @@
 import torch
 from torch.utils.data import DataLoader
 import pathlib
-from vfi_utils import load_file_from_github_release, preprocess_frames, postprocess_frames, generic_frame_loop, InterpolationStateList
+from ...vfi_utils import load_file_from_github_release, preprocess_frames, postprocess_frames, generic_frame_loop, InterpolationStateList
 import typing
 from comfy.model_management import get_torch_device
 
-MODEL_TYPE = pathlib.Path(__file__).parent.name
+MODEL_TYPE = "cain"
 CKPT_NAMES = ["pretrained_cain.pth"]
 
 

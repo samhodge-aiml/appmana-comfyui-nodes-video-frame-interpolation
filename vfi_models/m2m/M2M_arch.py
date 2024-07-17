@@ -12,8 +12,8 @@ import os
 import re
 import torch
 import typing
-from vfi_models.ops import softsplat_func
-from vfi_models.ops import costvol_func
+from ..ops import softsplat_func
+from ..ops import costvol_func
 
 ##########################################################
 
