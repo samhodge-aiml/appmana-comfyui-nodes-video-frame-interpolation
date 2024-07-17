@@ -25,10 +25,15 @@ import torch.nn as nn
 import torch.nn.functional as F
 import torch.optim as optim
 import torch.optim.lr_scheduler as lrs
+
+from comfy import utils
+from comfy.model_downloader import add_known_models, get_or_download
+from comfy.model_downloader_types import UrlFile
 from ..ops import FunctionCorrelation, FunctionAdaCoF, ModuleSoftsplat
-from ...vfi_utils import get_ckpt_container_path
-import pathlib
-MODEL_TYPE = pathlib.Path(__file__).parent.name
+from ...vfi_utils import VFI_MODELS_FOLDER_NAME
+
+add_known_models(VFI_MODELS_FOLDER_NAME, UrlFile("http://content.sniklaus.com/github/pytorch-pwc/network-default.pytorch", _save_with_filename="pytorch-pwc-network-default.pytorch"))
+MODEL_TYPE = "stmfnet_arch"
 
 #Simple way to reduce oranges on VSCode bar
 def identity(x):
@@ -534,14 +539,12 @@ class PWCNet(torch.nn.Module):
 
         self.netRefiner = Refiner()
 
+        state_dict_path = get_or_download(VFI_MODELS_FOLDER_NAME, "pytorch-pwc-network-default.pytorch")
+
         self.load_state_dict(
             {
                 strKey.replace("module", "net"): tenWeight
-                for strKey, tenWeight in torch.hub.load_state_dict_from_url(
-                    url="http://content.sniklaus.com/github/pytorch-pwc/network-"
-                    + "default"
-                    + ".pytorch",
-                    model_dir=get_ckpt_container_path(MODEL_TYPE)
+                for strKey, tenWeight in utils.load_torch_file(state_dict_path
                 ).items()
             }
         )
@@ -673,10 +676,12 @@ class Upsampler_8tap(nn.Module):
 
 
 model_urls = {
-    "r3d_18": "https://download.pytorch.org/models/r3d_18-b3b3357e.pth",
-    "mc3_18": "https://download.pytorch.org/models/mc3_18-a90a0ba3.pth",
-    "r2plus1d_18": "https://download.pytorch.org/models/r2plus1d_18-91a641e6.pth",
+    "r3d_18": UrlFile("https://download.pytorch.org/models/r3d_18-b3b3357e.pth"),
+    "mc3_18": UrlFile("https://download.pytorch.org/models/mc3_18-a90a0ba3.pth"),
+    "r2plus1d_18": UrlFile("https://download.pytorch.org/models/r2plus1d_18-91a641e6.pth"),
 }
+
+add_known_models(VFI_MODELS_FOLDER_NAME, *model_urls.values())
 
 
 class Conv3DSimple(nn.Conv3d):
@@ -982,7 +987,8 @@ def _video_resnet(arch, pretrained=False, progress=True, **kwargs):
     model = VideoResNet(**kwargs)
 
     if pretrained:
-        state_dict = load_state_dict_from_url(model_urls[arch], progress=progress, model_dir=get_ckpt_container_path(MODEL_TYPE))
+        path = get_or_download(VFI_MODELS_FOLDER_NAME,model_urls[arch].filename)
+        state_dict = utils.load_torch_file(path)
         model.load_state_dict(state_dict)
     return model
 
@@ -2287,15 +2293,13 @@ class Network(torch.nn.Module):
 
         self.netRefiner = Refiner()
 
+        state_dict_path = get_or_download(VFI_MODELS_FOLDER_NAME, "pytorch-pwc-network-default.pytorch")
+
         self.load_state_dict(
             {
                 strKey.replace("module", "net"): tenWeight
-                for strKey, tenWeight in torch.hub.load_state_dict_from_url(
-                    url="http://content.sniklaus.com/github/pytorch-pwc/network-"
-                    + "default"
-                    + ".pytorch",
-                    model_dir=get_ckpt_container_path(MODEL_TYPE)
-                ).items()
+                for strKey, tenWeight in utils.load_torch_file(state_dict_path
+                                                               ).items()
             }
         )
 

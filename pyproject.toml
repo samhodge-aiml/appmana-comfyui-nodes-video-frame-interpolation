@@ -3,6 +3,7 @@ name = "comfyui-frame-interpolation"
 description = "A custom node suite for Video Frame Interpolation in ComfyUI"
 version = "1.0.0"
 license = { file = "LICENSE" }
+dependencies = []
 
 [project.urls]
 Repository = "https://github.com/Fannovel16/ComfyUI-Frame-Interpolation"
@@ -24,7 +25,7 @@ package-dir = { "comfyui_frame_interpolation" = "." }
 dependencies = { file = ["requirements-with-cupy.txt"] }
 
 [project.entry-points."comfyui.custom_nodes"]
-comfyui_frame_interpolation = "comfyui_frame_interpolation"
+comfyui_frame_interpolation = "comfyui_frame_interpolation.nodes"
 
 [project.entry-points."comfyui.custom_config"]
 comfyui_frame_interpolation = "comfyui_frame_interpolation.config.add_configuration:add_configuration"

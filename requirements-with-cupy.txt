@@ -6,4 +6,5 @@ kornia
 scipy
 Pillow
 tqdm
+taichi
 cupy-cuda12x
