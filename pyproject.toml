@@ -29,11 +29,53 @@ requires = ["setuptools", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [tool.setuptools]
-packages = ["comfyui_frame_interpolation"]
-package-dir = { "comfyui_frame_interpolation" = "." }
+packages = [
+    "comfyui_frame_interpolation",
+    "comfyui_frame_interpolation.config",
+    "comfyui_frame_interpolation.nodes",
+    "comfyui_frame_interpolation.vfi_models",
+    "comfyui_frame_interpolation.vfi_models.amt",
+    "comfyui_frame_interpolation.vfi_models.cain",
+    "comfyui_frame_interpolation.vfi_models.eisai",
+    "comfyui_frame_interpolation.vfi_models.film",
+    "comfyui_frame_interpolation.vfi_models.flavr",
+    "comfyui_frame_interpolation.vfi_models.gmfss_fortuna",
+    "comfyui_frame_interpolation.vfi_models.ifrnet",
+    "comfyui_frame_interpolation.vfi_models.ifunet",
+    "comfyui_frame_interpolation.vfi_models.m2m",
+    "comfyui_frame_interpolation.vfi_models.ops",
+    "comfyui_frame_interpolation.vfi_models.ops.cupy_ops",
+    "comfyui_frame_interpolation.vfi_models.ops.taichi_ops",
+    "comfyui_frame_interpolation.vfi_models.rife",
+    "comfyui_frame_interpolation.vfi_models.sepconv",
+    "comfyui_frame_interpolation.vfi_models.stmfnet",
+    "comfyui_frame_interpolation.vfi_models.xvfi"
+]
 
-[tool.setuptools.dynamic]
-dependencies = { file = ["requirements-with-cupy.txt"] }
+[tool.setuptools.package-dir]
+"comfyui_frame_interpolation" = "."
+"comfyui_frame_interpolation.config" = "config"
+"comfyui_frame_interpolation.nodes" = "nodes"
+"comfyui_frame_interpolation.vfi_models" = "vfi_models"
+"comfyui_frame_interpolation.vfi_models.amt" = "vfi_models/amt"
+"comfyui_frame_interpolation.vfi_models.cain" = "vfi_models/cain"
+"comfyui_frame_interpolation.vfi_models.eisai" = "vfi_models/eisai"
+"comfyui_frame_interpolation.vfi_models.film" = "vfi_models/film"
+"comfyui_frame_interpolation.vfi_models.flavr" = "vfi_models/flavr"
+"comfyui_frame_interpolation.vfi_models.gmfss_fortuna" = "vfi_models/gmfss_fortuna"
+"comfyui_frame_interpolation.vfi_models.ifrnet" = "vfi_models/ifrnet"
+"comfyui_frame_interpolation.vfi_models.ifunet" = "vfi_models/ifunet"
+"comfyui_frame_interpolation.vfi_models.m2m" = "vfi_models/m2m"
+"comfyui_frame_interpolation.vfi_models.ops" = "vfi_models/ops"
+"comfyui_frame_interpolation.vfi_models.ops.cupy_ops" = "vfi_models/ops/cupy_ops"
+"comfyui_frame_interpolation.vfi_models.ops.taichi_ops" = "vfi_models/ops/taichi_ops"
+"comfyui_frame_interpolation.vfi_models.rife" = "vfi_models/rife"
+"comfyui_frame_interpolation.vfi_models.sepconv" = "vfi_models/sepconv"
+"comfyui_frame_interpolation.vfi_models.stmfnet" = "vfi_models/stmfnet"
+"comfyui_frame_interpolation.vfi_models.xvfi" = "vfi_models/xvfi"
+
+[tool.setuptools.package-data]
+"*" = ["**/*.js", "**/*.json"]
 
 [project.entry-points."comfyui.custom_nodes"]
 comfyui_frame_interpolation = "comfyui_frame_interpolation.nodes"
